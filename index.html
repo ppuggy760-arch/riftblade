@@ -11617,7 +11617,8 @@ const Upgrades = (() => {
       desc: 'Hits arc lightning to +1 nearby enemy.',
       stat: (l) => 'ARCS TO ' + l + (l > 1 ? ' TARGETS' : ' TARGET'),
       apply(m) { m.chain += 1; } },
-    { id: 'seeker', name: 'HUNTER SEEKERS', icon: '◎', color: PAL.green, rarity: 'rare', weight: 6, maxLevel: 3,
+    // Removed from the offer pool at the player's request (homing bolts made aiming too easy): weight 0 is never offered.
+    { id: 'seeker', name: 'HUNTER SEEKERS', icon: '◎', color: PAL.green, rarity: 'rare', weight: 0, maxLevel: 3,
       desc: 'Bolts curve toward the nearest target.',
       stat: (l) => 'TRACKING LV ' + l,
       apply(m) { m.homing += 1; } },
