@@ -1,0 +1,30 @@
+Lobster Lagoon: 46358 objects, length 85.7s at 140 BPM
+
+Reference run: completed, 3/3 coins, 73 planned clicks
+
+Physics sweep (values the docs leave open):
+  {'ball_g': 0.45}: pass
+  {'ball_g': 0.55}: pass
+  {'ball_g': 0.7}: pass
+  {'ball_g': 0.85}: pass
+  {'ufo_g': 0.38}: pass
+  {'ufo_g': 0.45}: pass
+  {'ufo_g': 0.6}: pass
+  {'ufo_g': 0.7}: pass
+  {'ship_up': 1500, 'ship_down': 1300}: pass
+  {'ship_up': 1800, 'ship_down': 2400}: pass
+  {'ship_up': 3200, 'ship_down': 2000}: pass
+  {'ship_up': 3600, 'ship_down': 3400}: pass
+
+Closest approach to blocks/spikes (units, 30 = one block):
+  lobster trap (ship): 14.3 units (at x=4496)
+  kelp forest (UFO): 14.8 units (at x=15241)
+  the boil (wave 2x): 14.9 units (at x=19180)
+  kelp forest (UFO), searched best path, min gap to kelp per gravity: 0.38: 24u, 0.45: 24u, 0.5: 31u, 0.6: 35u, 0.7: 39u
+
+Click timing windows (ms early / late that still pass):
+  seafloor (cube): 22 clicks, average window 108 ms, tightest 29 ms at x=2804 (-17/+12 ms)
+  claw tunnel (ball): 28 clicks, average window 233 ms, tightest 208 ms at x=8746 (-71/+138 ms)
+  escape (cube): 23 clicks, average window 106 ms, tightest 29 ms at x=21738 (-17/+12 ms)
+
+RESULT: ALL CHECKS PASSED
