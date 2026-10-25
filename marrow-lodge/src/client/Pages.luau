@@ -6,6 +6,7 @@ local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local GuiService = game:GetService("GuiService")
 
 local Config = require(ReplicatedStorage:WaitForChild("LodgeConfig"))
 
@@ -22,6 +23,7 @@ local STYLES = {
 
 local gui, shade, paper, label
 local openedAt, openedFrom = 0, nil
+local shown = 0 -- bumped on every show so a pending hide can tell it's stale
 
 local function build()
 	gui = Instance.new("ScreenGui")
@@ -108,8 +110,11 @@ function Pages.hide()
 	local t = TweenService:Create(shade, TweenInfo.new(0.2), { BackgroundTransparency = 1 })
 	t:Play()
 	TweenService:Create(paper, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In), { Position = UDim2.fromScale(0.5, 0.6) }):Play()
+	local token = shown
 	task.delay(0.2, function()
-		gui.Enabled = false
+		if shown == token then
+			gui.Enabled = false
+		end
 	end)
 	openedFrom = nil
 end
@@ -132,6 +137,7 @@ function Pages.show(text, styleName, from)
 	TweenService:Create(shade, TweenInfo.new(0.25), { BackgroundTransparency = 0.45 }):Play()
 	TweenService:Create(paper, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Position = UDim2.fromScale(0.5, 0.52) }):Play()
 	openedAt = os.clock()
+	shown += 1
 	openedFrom = from
 	if Config.Sounds.Page ~= "" then
 		local s = Instance.new("Sound")
@@ -160,14 +166,16 @@ function Pages.start()
 			Pages.show(text, page:GetAttribute("NoteStyle"), page.Position)
 		end
 	end)
-	UserInputService.InputBegan:Connect(function(input)
-		if not gui or not gui.Enabled or os.clock() - openedAt < 0.3 then
+	-- Backspace is left alone: it drops whatever tool is being held.
+	UserInputService.InputBegan:Connect(function(input, processed)
+		if processed or not gui or not gui.Enabled or os.clock() - openedAt < 0.3 then
 			return
 		end
-		if input.KeyCode == Enum.KeyCode.Escape or input.KeyCode == Enum.KeyCode.Backspace or input.KeyCode == Enum.KeyCode.ButtonB then
+		if input.KeyCode == Enum.KeyCode.ButtonB then
 			Pages.hide()
 		end
 	end)
+	GuiService.MenuOpened:Connect(Pages.hide)
 	-- walking away puts the page down
 	RunService.Heartbeat:Connect(function()
 		if openedFrom and gui and gui.Enabled then

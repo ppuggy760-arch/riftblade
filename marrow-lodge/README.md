@@ -99,9 +99,11 @@ Pages to find:
 
 ## Sounds and the Toolbox
 
-Everything is built from parts and scripts, with no free models, so nothing hidden comes along with them.
-Roblox only lets a place play sounds that are public or that you uploaded, so the sound slots in
-`LodgeConfig.Sounds` start empty. The only exception is a built-in click used for locks.
+Everything is built part by part from scripts; no Toolbox models are used. The background sound
+(`Ambience`) is "Night Ambience" from the Toolbox (asset 179507208). Locks use a built-in click. The rest
+of `LodgeConfig.Sounds` (door creaks, keys, the fire crackle, the ticking hall clock, page rustles and so
+on) is wired up but starts empty. The Toolbox audio search available while building this found nothing
+usable for those slots.
 
 To add sound, open the **Toolbox → Audio** tab and find one you like (creaky door, keys jingling, page
 turn, crackling fire, night ambience). Right-click it, choose **Copy Asset ID**, and paste it as
