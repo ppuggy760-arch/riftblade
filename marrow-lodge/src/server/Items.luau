@@ -217,6 +217,7 @@ local function setupSpot(model)
 			return
 		end
 		templates[TOOL_FOR[item]]:Clone().Parent = bp
+		Doors.playSound(prompt.Parent, config.Sounds.Pickup, 0.5, 1)
 		show(false)
 		if respawn > 0 then
 			task.delay(respawn, function()

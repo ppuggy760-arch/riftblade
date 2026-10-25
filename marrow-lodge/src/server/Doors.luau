@@ -145,10 +145,7 @@ local function rattle(state)
 			state.hinge.CFrame = state.closedCF
 		end
 	end)
-	playSound(state.hinge, config.Sounds.Rattle, 0.5, 0.55)
-	task.delay(0.12, function()
-		playSound(state.hinge, config.Sounds.Rattle, 0.4, 0.5)
-	end)
+	playSound(state.hinge, config.Sounds.Rattle, 0.6, 0.9 + math.random() * 0.15)
 end
 
 local function onLockPrompt(state, player)
@@ -179,6 +176,7 @@ local function onPickPrompt(state, player)
 		return
 	end
 	pin:Destroy()
+	playSound(state.hinge, config.Sounds.Pick, 0.7, 1)
 	setLocked(state, false)
 end
 

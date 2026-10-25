@@ -29,11 +29,15 @@ Config.Sounds = {
 	Rattle = "rbxasset://sounds/clickfast.wav",
 	DoorOpen = "",
 	DoorClose = "",
+	Pick = "",
+	Keys = "",
+	Pickup = "",
 	Boards = "",
 	Shelf = "",
 	Page = "",
+	Fire = "",
+	ClockTick = "",
 	Ambience = "",
-	Keys = "",
 }
 
 return Config

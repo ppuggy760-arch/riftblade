@@ -160,7 +160,7 @@ end
 script("ModuleScript", "LodgeConfig", "shared/LodgeConfig.luau", game:GetService("ReplicatedStorage"))
 
 local server = script("Script", "LodgeServer", "server/LodgeServer.server.luau", game:GetService("ServerScriptService"))
-for _, m in { "Doors", "Items", "Secrets", "Grounds" } do
+for _, m in { "Doors", "Items", "Secrets", "Grounds", "Sounds" } do
 	script("ModuleScript", m, "server/" .. m .. ".luau", server)
 end
 
