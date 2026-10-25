@@ -76,7 +76,7 @@ function Ambience.start()
 		s.Name = "Ambience"
 		s.SoundId = Config.Sounds.Ambience
 		s.Looped = true
-		s.Volume = 0.35
+		s.Volume = 0.3
 		s.Parent = SoundService
 		s:Play()
 	end

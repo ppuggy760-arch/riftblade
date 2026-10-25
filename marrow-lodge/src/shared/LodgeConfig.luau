@@ -37,7 +37,8 @@ Config.Sounds = {
 	Page = "",
 	Fire = "",
 	ClockTick = "",
-	Ambience = "",
+	-- "Night Ambience" from the Toolbox (crickets and wind under the golden-hour sky)
+	Ambience = "rbxassetid://179507208",
 }
 
 return Config
